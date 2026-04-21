@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Discovery Hub — UX & Dev Alignment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --primary: #0C447C; --primary-light: #E6F1FB; --accent: #1D9E75;
+            --text-main: #1a1a18; --text-muted: #5a5a56; --bg-site: #f0efe9;
+            --white: #ffffff; --border: rgba(0,0,0,0.1);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #89BBEF; --primary-light: #042C53; --accent: #5DCAA5;
+                --text-main: #f0efe9; --text-muted: #a0a09a; --bg-site: #131312; --white: #1e1e1c;
+            }
+        }
+        body { font-family: 'Atkinson Hyperlegible', sans-serif; background: var(--bg-site); color: var(--text-main); line-height: 1.6; }
+        
+        /* Navigation */
+        .nav-header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-link { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: var(--primary); }
+
+        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1.25rem; }
+        .page { display: none; animation: fadeIn 0.4s ease-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Typography */
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.1; }
+        h2 { font-size: 1.75rem; margin-top: 2rem; margin-bottom: 1rem; }
+        .lead { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+
+        /* Cards & Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .card { background: var(--white); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+        .card-eyebrow { font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; }
+        
+        /* Roadmap Table */
+        .roadmap-table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: var(--white); border-radius: 8px; overflow: hidden; }
+        .roadmap-table th { background: var(--primary-light); text-align: left; padding: 1rem; font-size: 0.8rem; text-transform: uppercase; }
+        .roadmap-table td { padding: 1rem; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+
+        /* Alerts */
+        .alert { background: var(--primary-light); border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 4px; margin: 2rem 0; }
+        .alert-title { font-weight: 700; display: block; margin-bottom: 0.5rem; }
+
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 1rem; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<nav class="nav-header">
+    <div class="nav-container">
+        <a class="logo" onclick="showPage('home')">DiscoveryHub</a>
+        <div class="nav-links">
+            <span class="nav-link active" id="link-home" onclick="showPage('home')">Roadmap</span>
+            <span class="nav-link" id="link-workshops" onclick="showPage('workshops')">Workshops</span>
+            <span class="nav-link" id="link-orca" onclick="showPage('orca')">ORCA</span>
+            <span class="nav-link" id="link-jtbd" onclick="showPage('jtbd')">JTBD</span>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <section id="home" class="page active">
+        <h1>Aligning UX & Dev in Discovery</h1>
+        <p class="lead">Stop handoff friction. Build a shared system model before wireframing or coding begins.</p>
+        
+        <table class="roadmap-table">
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>Activity</th>
+                    <th>Outcome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>0. Discovery</strong></td><td>JTBD Interviews</td><td>A validated "Job Statement"</td></tr>
+                <tr><td><strong>1. Mining</strong></td><td>Noun Foraging</td><td>Candidate Object list</td></tr>
+                <tr><td><strong>2. Logic</strong></td><td>Relationship Mapping</td><td>Technical System Architecture</td></tr>
+                <tr><td><strong>3. Action</strong></td><td>CTA Matrix</td><td>System capability map</td></tr>
+                <tr><td><strong>4. Specs</strong></td><td>Attribute Force Ranking</td><td>The Data Contract (API Spec)</td></tr>
+            </tbody>
+        </table>
+
+        <div class="alert">
+            <span class="alert-title">The Handshake Rule</span>
+            <p>Do not open Figma until the <strong>Object Glossary</strong> is signed off. UX designs for the data that exists; Devs build for the user that struggles.</p>
+        </div>
+    </section>
+
+    <section id="workshops" class="page">
+        <h1>Workshop Series</h1>
+        <p class="lead">Run these four collaborative sessions to bridge the alignment gap.</p>
+        <div class="grid">
+            <div class="card">
+                <div class="card-eyebrow">Session 1</div>
+                <h3>The Struggle & Nouns</h3>
+                <p>Identify why the user is "hiring" the product and extract every noun to find objects.</p>
+            </div>
+            <div class="card">
+                <div class="card-eyebrow">Session 2</div>
+                <h3>Object Modeling</h3>
+                <p>Draw lines between objects. Devs define if relationships are 1:1 or 1:Many.</p>
+            </div>
+            <div class="card">
+                <div class="card-eyebrow">Session 3</div>
+                <h3>Verbs & Capabilities</h3>
+                <p>Define what actions (CTAs) can be performed on each object and who has permission.</p>
+            </div>
+            <div class="card">
+                <div class="card-eyebrow">Session 4</div>
+                <h3>The Data Contract</h3>
+                <p>List and rank attributes. Finalize exactly what data fields the API needs to return.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="orca" class="page">
+        <h1>ORCA Framework</h1>
+        <p class="lead">Object, Relationship, Call-to-Action, Attribute.</p>
+        <div class="card">
+            <h3>Why OOUX?</h3>
+            <p>Traditional UX often focuses on "task flows"—how a user moves from A to B. But complex systems fail when the "things" (Objects) at those steps aren't well defined. ORCA ensures the system skeleton is solid first.</p>
+            <button class="btn" onclick="window.open('https://ooux.com', '_blank')">Learn ORCA in Depth</button>
+        </div>
+    </section>
+
+    <section id="jtbd" class="page">
+        <h1>Jobs to be Done</h1>
+        <p class="lead">Upgrade the user, not the product.</p>
+        <div class="card">
+            <h3>Hire vs. Fire</h3>
+            <p>Users don't buy products; they hire them to make progress. To get someone to use your new system, they have to "fire" their old habit. Understanding the "Push" of the current struggle is essential for the Roadmap.</p>
+            <button class="btn" onclick="showPage('workshops')">Start Discovery</button>
+        </div>
+    </section>
+</div>
+
+<script>
+    function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        // Show target page
+        document.getElementById(pageId).classList.add('active');
+        
+        // Update nav links
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        document.getElementById('link-' + pageId).classList.add('active');
+        
+        window.scrollTo(0,0);
+    }
+</script>
+
+</body>
+</html>
