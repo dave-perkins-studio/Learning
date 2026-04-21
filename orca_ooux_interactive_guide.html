@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORCA Process — OOUX Interactive Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple-50: #EEEDFE; --purple-100: #CECBF6; --purple-200: #AFA9EC;
+  --purple-400: #7F77DD; --purple-600: #534AB7; --purple-800: #3C3489; --purple-900: #26215C;
+  --teal-50: #E1F5EE; --teal-100: #9FE1CB; --teal-200: #5DCAA5;
+  --teal-400: #1D9E75; --teal-600: #0F6E56; --teal-800: #085041;
+  --coral-50: #FAECE7; --coral-100: #F5C4B3; --coral-200: #F0997B;
+  --coral-400: #D85A30; --coral-600: #993C1D; --coral-800: #712B13;
+  --amber-50: #FAEEDA; --amber-100: #FAC775; --amber-200: #EF9F27;
+  --amber-600: #854F0B; --amber-800: #633806;
+  --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-200: #B4B2A9;
+  --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441;
+  --blue-50: #E6F1FB; --blue-100: #B5D4F4; --blue-400: #378ADD;
+  --blue-600: #185FA5; --blue-800: #0C447C;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f4f0;
+  --bg-tertiary: #f0efe9;
+  --text-primary: #1a1a18;
+  --text-secondary: #5a5a56;
+  --border-light: rgba(0,0,0,0.1);
+  --border-medium: rgba(0,0,0,0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1e1e1c;
+    --bg-secondary: #252522;
+    --bg-tertiary: #2c2c29;
+    --text-primary: #f0efe9;
+    --text-secondary: #a0a09a;
+    --border-light: rgba(255,255,255,0.1);
+    --border-medium: rgba(255,255,255,0.18);
+    --purple-50: #26215C; --purple-100: #3C3489; --purple-200: #534AB7;
+    --purple-800: #CECBF6; --purple-600: #AFA9EC;
+    --teal-50: #04342C; --teal-600: #9FE1CB; --teal-800: #E1F5EE;
+    --coral-50: #4A1B0C; --coral-600: #F0997B; --coral-800: #F5C4B3;
+    --amber-50: #412402; --amber-600: #FAC775; --amber-800: #FAEEDA;
+    --blue-50: #042C53; --blue-600: #B5D4F4; --blue-800: #E6F1FB;
+    --gray-50: #2C2C2A; --gray-400: #888780;
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Atkinson Hyperlegible', Georgia, serif;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.page-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.header {
+  padding: 2.5rem 2rem 2rem;
+  background: var(--bg-primary);
+  border-radius: 2px;
+  border: 0.5px solid var(--border-light);
+  margin-bottom: 1.5rem;
+}
+
+.header-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purple-600);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.header-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 580px;
+  margin-bottom: 1.5rem;
+}
+
+.phase-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.phase-btn {
+  font-family: 'Atkinson Hyperlegible', serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 2px;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.phase-btn.all { background: var(--purple-800); color: #fff; border-color: var(--purple-800); }
+.phase-btn.p1 { background: var(--purple-50); color: var(--purple-800); border-color: var(--purple-200); }
+.phase-btn.p2 { background: var(--teal-50); color: var(--teal-600); border-color: var(--teal-200); }
+.phase-btn.p3 { background: var(--coral-50); color: var(--coral-600); border-color: var(--coral-200); }
+.phase-btn.p4 { background: var(--amber-50); color: var(--amber-600); border-color: var(--amber-100); }
+.phase-btn.p5 { background: var(--blue-50); color: var(--blue-600); border-color: var(--blue-100); }
+.phase-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+.phase-btn.active { outline: 2.5px solid var(--purple-400); outline-offset: 2px; }
+
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 5px;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple-400), var(--teal-400));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+.progress-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: right;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phase-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.phase-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--border-light);
+}
+
+.step-card {
+  background: var(--bg-primary);
+  border: 0.5px solid var(--border-light);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.step-card:hover { border-color: var(--border-medium); }
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.step-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-family: 'Atkinson Hyperlegible', serif;
+}
+
+.phase-p1 .step-num { background: var(--purple-100); color: var(--purple-800); }
+.phase-p2 .step-num { background: var(--teal-50); color: var(--teal-600); }
+.phase-p3 .step-num { background: var(--coral-50); color: var(--coral-600); }
+.phase-p4 .step-num { background: var(--amber-50); color: var(--amber-600); }
+.phase-p5 .step-num { background: var(--blue-50); color: var(--blue-600); }
+
+.step-meta { flex: 1; min-width: 0; }
+
+.step-name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.step-tagline {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.step-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.done-badge {
+  width: 20px; height: 20px;
+  border-radius: 2px;
+  background: var(--teal-50);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  color: var(--teal-600);
+  font-weight: 700;
+}
+
+.chevron {
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+  font-size: 13px;
+}
+
+.step-card.open .chevron { transform: rotate(180deg); }
+
+.step-body {
+  display: none;
+  padding: 0 18px 18px;
+  border-top: 0.5px solid var(--border-light);
+}
+
+.step-card.open .step-body { display: block; }
+
+.tab-bar {
+  display: flex;
+  gap: 0;
+  margin: 12px 0 16px;
+  border-bottom: 1.5px solid var(--border-light);
+  overflow-x: auto;
+}
+
+.tab-btn {
+  font-family: 'Atkinson Hyperlegible', serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 13px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1.5px;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.tab-btn.active { color: var(--purple-600); border-bottom-color: var(--purple-600); }
+.tab-btn:hover { color: var(--text-primary); }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.prose {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.pro-tip {
+  background: var(--purple-50);
+  border-left: 3px solid var(--purple-400);
+  border-radius: 0 2px 2px 0;
+  padding: 12px 14px;
+}
+
+.pro-tip-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple-600);
+  margin-bottom: 6px;
+}
+
+.pro-tip p {
+  font-size: 13.5px;
+  color: var(--purple-800);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.trip-point {
+  background: var(--coral-50);
+  border-left: 3px solid var(--coral-400);
+  border-radius: 0 2px 2px 0;
+  padding: 10px 14px;
+}
+
+.trip-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral-600);
+  margin-bottom: 4px;
+}
+
+.trip-point p {
+  font-size: 13.5px;
+  color: var(--coral-800);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.checklist li.checked {
+  color: var(--gray-400);
+  text-decoration: line-through;
+}
+
+.check-box {
+  width: 17px; height: 17px;
+  border: 1.5px solid var(--border-medium);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  transition: all 0.15s;
+  background: var(--bg-primary);
+}
+
+.checklist li.checked .check-box {
+  background: var(--teal-400);
+  border-color: var(--teal-400);
+  color: #fff;
+}
+
+.example-box {
+  background: var(--bg-secondary);
+  border-radius: 2px;
+  padding: 13px 15px;
+
+.example-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.example-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.example-text {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.standalone-tag {
+  display: inline-block;
+  background: var(--teal-50);
+  color: var(--teal-600);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-top: 7px;
+}
+
+.mark-done-btn {
+  font-family: 'Atkinson Hyperlegible', serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 7px;
+  border: 1px solid var(--border-medium);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  margin-top: 14px;
+  transition: all 0.15s;
+}
+
+.mark-done-btn:hover {
+  background: var(--teal-50);
+  border-color: var(--teal-400);
+  color: var(--teal-600);
+}
+
+.mark-done-btn.done {
+  background: var(--teal-50);
+  border-color: var(--teal-400);
+  color: var(--teal-600);
+}
+
+.hidden { display: none !important; }
+
+footer {
+  padding: 2rem 0 0;
+}
+
+.references-block {
+  background: var(--bg-primary);
+  border: 0.5px solid var(--border-light);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+.references-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purple-600);
+  margin-bottom: 0.5rem;
+}
+
+.references-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.references-intro {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  max-width: 560px;
+}
+
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.ref-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background 0.15s, transform 0.15s;
+  border: 0.5px solid transparent;
+}
+
+.ref-card:hover {
+  background: var(--purple-50);
+  border-color: var(--purple-200);
+  transform: translateY(-1px);
+}
+
+.ref-card-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple-600);
+  margin-bottom: 5px;
+}
+
+.ref-card-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.ref-card-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.ref-card-url {
+  font-size: 11px;
+  color: var(--purple-600);
+  margin-top: 6px;
+  display: block;
+  font-weight: 700;
+}
+
+.sophia-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--purple-50);
+  border-radius: 12px;
+  border: 0.5px solid var(--purple-200);
+}
+
+.sophia-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--purple-200);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--purple-800);
+  flex-shrink: 0;
+}
+
+.sophia-bio {
+  flex: 1;
+}
+
+.sophia-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--purple-800);
+  margin-bottom: 2px;
+}
+
+.sophia-role {
+  font-size: 12px;
+  color: var(--purple-600);
+  line-height: 1.4;
+}
+
+.sophia-links {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sophia-link {
+  font-family: 'Atkinson Hyperlegible', serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 20px;
+  text-decoration: none;
+  background: var(--purple-800);
+  color: #fff;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.sophia-link:hover { opacity: 0.8; }
+
+.sophia-link.ghost {
+  background: transparent;
+  color: var(--purple-800);
+  border: 1.5px solid var(--purple-400);
+}
+
+.footer-credit {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  padding: 1rem 0;
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="header">
+    <div class="header-eyebrow">OOUX Framework</div>
+    <h1>The ORCA Process</h1>
+    <p class="header-desc">A complete 15-step methodology for Object-Oriented UX design. Work through each step to structure complex systems around the objects users care about — before you wireframe a single screen.</p>
+
+    <div class="phase-nav">
+      <button class="phase-btn all active" onclick="filterPhase('all', this)">All 15 steps</button>
+      <button class="phase-btn p1" onclick="filterPhase('p1', this)">1. Objects</button>
+      <button class="phase-btn p2" onclick="filterPhase('p2', this)">2. Relationships</button>
+      <button class="phase-btn p3" onclick="filterPhase('p3', this)">3. CTAs</button>
+      <button class="phase-btn p4" onclick="filterPhase('p4', this)">4. Attributes</button>
+      <button class="phase-btn p5" onclick="filterPhase('p5', this)">5. Force Rank</button>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <span class="progress-label" id="progressLabel">0 / 15 done</span>
+    </div>
+  </div>
+
+  <div class="steps-list" id="stepsList"></div>
+
+  <footer>
+    <div class="references-block">
+      <div class="references-eyebrow">Go deeper</div>
+      <div class="references-heading">Explore Sophia Prater's work</div>
+      <p class="references-intro">ORCA and OOUX were developed by Sophia Prater. If this guide sparked something, her courses, book, and community are where to take it further.</p>
+
+      <div class="ref-grid">
+        <a class="ref-card" href="https://www.ooux.com" target="_blank" rel="noopener">
+          <div class="ref-card-label">Main site</div>
+          <div class="ref-card-title">OOUX.com</div>
+          <div class="ref-card-desc">The home of Object-Oriented UX — frameworks, articles, and resources from Sophia.</div>
+          <span class="ref-card-url">ooux.com →</span>
+        </a>
+        <a class="ref-card" href="https://www.ooux.com/orca" target="_blank" rel="noopener">
+          <div class="ref-card-label">The process</div>
+          <div class="ref-card-title">ORCA in depth</div>
+          <div class="ref-card-desc">Sophia's own documentation of the full ORCA process, with templates and worksheets.</div>
+          <span class="ref-card-url">ooux.com/orca →</span>
+        </a>
+        <a class="ref-card" href="https://www.ooux.com/certify" target="_blank" rel="noopener">
+          <div class="ref-card-label">Certification</div>
+          <div class="ref-card-title">OOUX Certification</div>
+          <div class="ref-card-desc">Become a certified OOUX strategist. Live cohort-based courses led by Sophia.</div>
+          <span class="ref-card-url">ooux.com/certify →</span>
+        </a>
+        <a class="ref-card" href="https://www.amazon.com/dp/B09HCVB5VZ" target="_blank" rel="noopener">
+          <div class="ref-card-label">The book</div>
+          <div class="ref-card-title">Designing Connected Content</div>
+          <div class="ref-card-desc">Co-authored with Mike Atherton. The foundational book on content modelling and OOUX thinking.</div>
+          <span class="ref-card-url">Amazon →</span>
+        </a>
+        <a class="ref-card" href="https://www.linkedin.com/in/sophiaprater" target="_blank" rel="noopener">
+          <div class="ref-card-label">Follow</div>
+          <div class="ref-card-title">Sophia on LinkedIn</div>
+          <div class="ref-card-desc">Active posts on OOUX, design systems, and UX strategy. A great feed to follow.</div>
+          <span class="ref-card-url">linkedin.com →</span>
+        </a>
+        <a class="ref-card" href="https://www.ooux.com/community" target="_blank" rel="noopener">
+          <div class="ref-card-label">Community</div>
+          <div class="ref-card-title">OOUX Community</div>
+          <div class="ref-card-desc">Join practitioners applying ORCA on real projects. Peer feedback, templates, and live discussions.</div>
+          <span class="ref-card-url">ooux.com/community →</span>
+        </a>
+      </div>
+
+      <div class="sophia-row">
+        <div class="sophia-avatar">SP</div>
+        <div class="sophia-bio">
+          <div class="sophia-name">Sophia Prater</div>
+          <div class="sophia-role">Creator of OOUX &amp; the ORCA process · UX strategist, author, and educator</div>
+        </div>
+        <div class="sophia-links">
+          <a class="sophia-link ghost" href="https://www.ooux.com" target="_blank" rel="noopener">Website</a>
+          <a class="sophia-link" href="https://www.ooux.com/certify" target="_blank" rel="noopener">Get certified</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-credit">ORCA · Object-Oriented UX · Framework by Sophia Prater · Guide compiled for reference use</div>
+  </footer>
+
+</div>
+
+<script>
+const STEPS = [
+  {
+    phase: 'p1',
+    num: 1, name: 'Identify candidate objects',
+    tagline: 'Mine your content for nouns',
+    overview: 'Gather everything you know about the system — briefs, user research, existing flows, competitor audits — and extract all the nouns. Every person, place, thing, or concept that the system deals with is a candidate object. Cast wide at this stage; you\'ll refine later.',
+    tip: 'Colour-code your nouns as you pull them out of source material. Nouns that appear frequently across multiple sources are almost certainly real objects. Nouns that only appear once may be attributes of another object.',
+    trips: ['Including verbs as objects — "search" is a CTA, not an object', 'Skipping this step and jumping to screens — always mine nouns first', 'Conflating UI elements (modals, pages) with domain objects'],
+    checklist: ['All source material reviewed (briefs, research, competitor analysis)', 'Every noun extracted and listed', 'List includes people, places, things, and concepts', 'No filtering yet — keep everything for now'],
+    example: { project: 'Benefits adviser platform', desc: 'Candidate objects extracted: Claimant, Adviser, Case, Application, Benefit Scheme, Document, Note, Decision, Organisation, Appointment, Eligibility Rule, Communication.' },
+    standalone: 'Use this alone to audit an existing IA — list every object type the system currently handles and compare against user research to find gaps.'
+  },
+  {
+    phase: 'p1',
+    num: 2, name: 'Define objects',
+    tagline: 'Give each object a crisp one-sentence definition',
+    overview: 'Write a plain-English definition for each candidate object. This forces clarity — if you can\'t define it, it\'s not a real object. A definition makes the object\'s scope explicit and helps the team share a common vocabulary.',
+    tip: 'A good object definition fits the pattern: "A [object] is a [category] that [distinguishing characteristic]." If your definition sounds like a feature or a verb, you\'ve found a CTA or an attribute masquerading as an object.',
+    trips: ['Writing definitions that are actually descriptions of UI', 'Defining objects so broadly they encompass everything', 'Skipping definitions and relying on assumed shared understanding'],
+    checklist: ['Every candidate object has a one-sentence definition', 'Definitions use plain language, not technical jargon', 'Each definition distinguishes the object from similar objects', 'Team has reviewed and agreed on definitions'],
+    example: { project: 'Benefits adviser platform', desc: 'Case: a Case is a container that groups all work and information related to a single claimant\'s contact with the service. Application: an Application is a formal request submitted by a Claimant for assessment against a specific Benefit Scheme.' },
+    standalone: 'Run this as a workshop exercise to create a shared vocabulary doc — invaluable for cross-functional teams where engineering, product, and design use different terms for the same concepts.'
+  },
+  {
+    phase: 'p1',
+    num: 3, name: 'Remove non-objects',
+    tagline: 'Cull the list with discipline',
+    overview: 'Now filter ruthlessly. An object must be a persistent noun — it exists over time, has attributes, and users interact with it directly. Remove anything that is actually a status, a view, a UI pattern, a CTA, or an attribute of another object.',
+    tip: 'Ask: "Can a user do something TO this thing?" If the answer is no — if it\'s something that happens, or a property of something else — it\'s not an object. "Status" is almost never an object; it\'s an attribute.',
+    trips: ['Keeping statuses as objects (e.g. "Pending" as an object rather than an attribute of Application)', 'Keeping UI concepts like "Dashboard" or "Inbox" as objects', 'Over-culling — when in doubt, keep it in until a later step proves otherwise'],
+    checklist: ['Statuses removed from object list', 'UI constructs removed (pages, modals, views)', 'CTAs identified and moved to a separate list', 'Remaining objects all have independent existence over time'],
+    example: { project: 'Benefits adviser platform', desc: 'Removed: "Pending" (attribute of Application), "Inbox" (a view), "Submit" (a CTA), "Notification" (borderline — kept for now as it has attributes and persistence).' },
+    standalone: 'Do this step after an IA audit to reclassify existing navigation items — you\'ll often find that "sections" are actually CTAs or attributes, revealing a more object-centred IA.'
+  },
+  {
+    phase: 'p2',
+    num: 4, name: 'Map object relationships',
+    tagline: 'Draw the connections between objects',
+    overview: 'For every pair of objects, determine if a relationship exists. Relationships are directional and have cardinality: one-to-one, one-to-many, or many-to-many. This step produces a rough object model — the skeleton of your information architecture.',
+    tip: 'Don\'t get bogged down in database-level precision. Sketch the relationships in plain English first: "A Case has many Applications." "An Application belongs to one Claimant." Precision comes later if needed.',
+    trips: ['Modelling relationships as if designing a database — stay at the conceptual level', 'Missing inverse relationships (if A has many B, does B belong to one A?)', 'Ignoring many-to-many relationships — these often reveal important junction objects'],
+    checklist: ['Every object checked against every other object for a relationship', 'Cardinality noted for each relationship (1:1, 1:many, many:many)', 'Directional language used ("has", "belongs to", "is part of")', 'Diagram or matrix produced'],
+    example: { project: 'Benefits adviser platform', desc: 'Claimant has many Cases. Case has many Applications. Application belongs to one Benefit Scheme. Adviser manages many Cases. Document belongs to one Case (or Application). Note belongs to one Case.' },
+    standalone: 'Use this standalone to pressure-test an existing data model — present the object relationship map to engineering to validate assumptions before wireframing begins.'
+  },
+  {
+    phase: 'p2',
+    num: 5, name: 'Identify nested objects',
+    tagline: 'Find containment and composition',
+    overview: 'Some objects live inside other objects — they have no meaning outside their parent. A line item in an order has no existence outside that order. Nested objects inform the UI: their attributes appear on the parent\'s detail view, and they often don\'t need their own top-level navigation.',
+    tip: 'Ask: "Does this object make sense without its parent?" If a Note only makes sense in the context of a Case, it\'s nested. But if Notes could ever be accessed across cases (e.g. a notes inbox), they may be top-level objects.',
+    trips: ['Treating all one-to-many relationships as nesting — containment is stronger than ownership', 'Missing nested objects that need their own CRUD screens', 'Nesting objects that actually need to be accessed independently'],
+    checklist: ['Every object checked for potential parent objects', 'Nested objects documented with their parent', 'Decision recorded: why each nested object can\'t exist independently', 'UI implication noted: nested objects appear on parent detail view'],
+    example: { project: 'Benefits adviser platform', desc: 'Note is nested within Case (no standalone access needed). Document is NOT nested — it can be accessed across Cases via a document library. Application is NOT nested — advisers need a standalone Application queue.' },
+    standalone: 'Use this to determine navigation depth — nested objects shouldn\'t have top-level nav items, which helps trim bloated site maps.'
+  },
+  {
+    phase: 'p2',
+    num: 6, name: 'Define relationship rules',
+    tagline: 'State the business logic of each connection',
+    overview: 'Beyond cardinality, each relationship has rules: Can a Claimant have multiple Cases simultaneously? Can an Application move between Cases? Who can create or break a relationship? These rules come from stakeholders and domain experts — surface them now to avoid redesigns later.',
+    tip: 'Frame questions to stakeholders as relationship rules: "Can a document be attached to more than one case?" This framing cuts through abstract business logic discussions and gets concrete answers fast.',
+    trips: ['Assuming rules without asking — domain logic is almost always more complex than you expect', 'Not capturing who can create, modify, or delete relationships', 'Missing temporal rules — can a relationship change over time?'],
+    checklist: ['Rules documented for every relationship', 'Permission rules captured (who can create/break each relationship)', 'Temporal rules noted (can relationships change?)', 'Rules validated with a domain expert or product owner'],
+    example: { project: 'Benefits adviser platform', desc: 'A Claimant can have only one active Case at a time. An Application can only be submitted if the parent Case has a verified Claimant identity. Documents can be attached to Cases OR Applications but not both simultaneously.' },
+    standalone: 'Relationship rules become acceptance criteria. Export this step\'s output directly into a requirements doc or Jira tickets to brief engineering on data model constraints.'
+  },
+  {
+    phase: 'p3',
+    num: 7, name: 'Identify calls-to-action per object',
+    tagline: 'What can users DO with each object?',
+    overview: 'For each object, list every action a user can perform. CTAs are the verbs of your system. They\'re what become buttons, links, and interactions in the UI. Separate "system CTAs" (triggered automatically) from "user CTAs" (explicitly initiated by a human).',
+    tip: 'A CTA always has an object: "Submit [Application]", "Assign [Case]", "Upload [Document]". If you can\'t name the object the CTA acts on, it\'s not a CTA yet — it\'s a vague feature request.',
+    trips: ['Listing CTAs without specifying which object they act on', 'Confusing system events with user CTAs', 'Adding UI navigation as CTAs ("View", "Go to" are navigation, not CTAs)'],
+    checklist: ['CTAs listed for every object', 'Each CTA written as verb + object', 'User CTAs distinguished from system CTAs', 'CTAs checked against user goals — do they map to actual tasks?'],
+    example: { project: 'Benefits adviser platform', desc: 'Case CTAs: Assign Case, Close Case, Reopen Case, Merge Cases, Add Note to Case, Upload Document to Case. Application CTAs: Submit Application, Withdraw Application, Approve Application, Request More Information, Reject Application.' },
+    standalone: 'Use CTAs as the source of truth for a task analysis. Map each CTA to a user role and frequency to prioritise UI real estate without needing full wireframes.'
+  },
+  {
+    phase: 'p3',
+    num: 8, name: 'Assign CTAs to objects and views',
+    tagline: 'Decide where each action lives',
+    overview: 'CTAs need to live somewhere. For each CTA, decide: does it live on the parent object\'s detail view? On the object it creates? On a list view? This step begins to sketch your UI architecture without drawing screens.',
+    tip: 'A CTA should live closest to the object it most directly affects. "Approve Application" lives on the Application object, not the Case. Getting this right now prevents misplaced buttons later — a common cause of confusing UIs.',
+    trips: ['Putting CTAs on the wrong object\'s view', 'Duplicating CTAs across too many views — leads to confusing UIs', 'Forgetting that some CTAs only appear under certain conditions (state-based CTAs)'],
+    checklist: ['Every CTA assigned to a primary object view', 'Secondary locations noted where duplication is justified', 'Conditional CTAs documented with their trigger conditions', 'Destructive CTAs (delete, reject) flagged for confirmation pattern'],
+    example: { project: 'Benefits adviser platform', desc: '"Assign Case" lives on the Case detail view and the Cases list (bulk assign). "Submit Application" lives on the Application detail view only. "Request More Information" is a conditional CTA — only visible when Application is in Review status.' },
+    standalone: 'Use this to critique an existing interface: map every button/link back to this model to find orphaned CTAs (actions with no clear object owner) and duplicated actions causing confusion.'
+  },
+  {
+    phase: 'p3',
+    num: 9, name: 'Define CTA outcomes',
+    tagline: 'What happens after each action?',
+    overview: 'For every CTA, define: what changes in the system? What does the user see next? What notifications or side effects occur? This step surfaces interaction design requirements and helps you spot flows that need separate design attention.',
+    tip: 'CTA outcomes often reveal new objects or attributes you missed. "Approve Application" changes Application status, creates a Decision record, and triggers a Communication. "Decision" and "Communication" might be new objects worth adding.',
+    trips: ['Defining outcomes only at the happy-path level — edge cases matter too', 'Missing side effects that affect other objects', 'Not accounting for error states as outcomes'],
+    checklist: ['Primary outcome defined for every CTA', 'Object state changes documented', 'Side effects on related objects noted', 'Error and edge case outcomes captured'],
+    example: { project: 'Benefits adviser platform', desc: '"Approve Application" outcome: Application status changes to Approved. A Decision object is created. Claimant receives a Communication. Case status is reviewed and potentially auto-closed if all Applications resolved.' },
+    standalone: 'CTA outcomes become the input for user flow mapping. You can produce a complete service blueprint from this step alone — mapping actions to outcomes to system responses across all touchpoints.'
+  },
+  {
+    phase: 'p4',
+    num: 10, name: 'Define attributes per object',
+    tagline: 'What data does each object carry?',
+    overview: 'For every object, list all its attributes — the data fields that describe it. Attributes are what you display on object views, filter by in lists, and capture in forms. A complete attribute list is the basis for form design, list/card design, and detail view design.',
+    tip: 'Distinguish between attributes that are always present (core attributes) and those that are conditionally present. "Decision Reason" is only an attribute of Application when a decision has been made. Conditional attributes often drive UI complexity.',
+    trips: ['Confusing relationships with attributes — "Assigned Adviser" is a relationship to the Adviser object, not a simple text attribute', 'Listing UI labels rather than data attributes', 'Missing derived attributes (calculated from other attributes)'],
+    checklist: ['All attributes listed for every object', 'Data type noted for each attribute (text, date, number, boolean, enum)', 'Core vs conditional attributes distinguished', 'Derived/calculated attributes identified and marked'],
+    example: { project: 'Benefits adviser platform', desc: 'Application attributes: ID (auto), Submission Date, Status (enum: Draft/Submitted/In Review/Approved/Rejected/Withdrawn), Benefit Scheme (relationship), Claimant (relationship), Evidence Documents (relationship), Decision (relationship, conditional), Assigned Adviser (relationship).' },
+    standalone: 'Use the attribute list to write a content audit brief or to define the data contract between design and engineering. Handing off a complete attribute list with data types prevents scope creep during development.'
+  },
+  {
+    phase: 'p4',
+    num: 11, name: 'Prioritise attributes',
+    tagline: 'Not all data is equally important',
+    overview: 'Rank each object\'s attributes by importance to the user in context. Primary attributes are always visible. Secondary attributes appear on demand. Tertiary attributes are available but hidden by default. This directly maps to visual hierarchy in your UI.',
+    tip: 'Prioritisation should be role-based. The same object may have different attribute priorities for different user roles. An adviser cares most about Application status and deadline; a manager cares most about case volume and adviser assignment.',
+    trips: ['Prioritising attributes based on system logic rather than user needs', 'Giving everything "primary" priority — forces a choice', 'Not varying priority by user role when roles have different needs'],
+    checklist: ['Attributes ranked as primary, secondary, or tertiary for each object', 'Prioritisation validated against user research (jobs-to-be-done)', 'Role-specific prioritisation documented where roles differ', 'Primary attributes tested: can a user make a key decision from them alone?'],
+    example: { project: 'Benefits adviser platform', desc: 'Application card (list view) — Primary: Claimant name, Status, Benefit Scheme, Days since submission. Secondary: Assigned Adviser, Last activity. Tertiary: Application ID, all other metadata. This becomes the card design spec directly.' },
+    standalone: 'Attribute priority is your content hierarchy spec. Use it directly in design critiques: challenge any UI that promotes tertiary attributes above primary ones.'
+  },
+  {
+    phase: 'p4',
+    num: 12, name: 'Map attributes to views',
+    tagline: 'Which attributes appear where?',
+    overview: 'Now connect attributes to the views where they\'ll appear. A card view shows only primary attributes. A detail view shows all. A form view shows only editable attributes. This step prevents over-designed list views and under-designed detail views.',
+    tip: 'The attribute-to-view mapping is your design spec before wireframing. You should be able to hand this document to a developer and they could build the data layer — the UI design fills in the presentation layer on top.',
+    trips: ['Designing forms that capture attributes not in the object model', 'List views that try to show every attribute (cognitive overload)', 'Detail views that are missing attributes users need to make decisions'],
+    checklist: ['Card/list view attributes defined (primary only)', 'Detail view attributes defined (all, with grouping)', 'Form view attributes defined (editable only)', 'Read-only vs editable state defined for each attribute in each view'],
+    example: { project: 'Benefits adviser platform', desc: 'Application detail view sections: Status (always visible at top), Key Info (primary attributes), Claimant details (linked object preview), Evidence (linked documents), Decision (conditional section, appears post-decision), Activity log (system-generated).' },
+    standalone: 'Use this as a handoff artefact to engineering without any wireframes. The attribute-to-view mapping defines every screen\'s data requirements and prevents "we\'ll figure it out later" ambiguity.'
+  },
+  {
+    phase: 'p5',
+    num: 13, name: 'Force rank objects',
+    tagline: 'What is the most important object in the system?',
+    overview: 'Put all your objects in a strict ranked order of importance to the primary user. Force ranking — no ties allowed — surfaces genuine priorities and directly informs navigation architecture. The top-ranked object often deserves primary navigation; lower-ranked objects may be nested or secondary.',
+    tip: 'Rank from the user\'s perspective, not the business\'s. The most important object is what the user most frequently needs to access and act upon. For an adviser, that\'s almost certainly the Case or the Application — not the Benefit Scheme configuration.',
+    trips: ['Ranking by business importance rather than user need', 'Allowing ties — force ranking requires a decision', 'Ranking objects that should have been removed in Step 3'],
+    checklist: ['All objects listed', 'Strict rank order assigned (no ties)', 'Rank validated against user research and job-to-be-done', 'Top 3 objects identified as primary navigation candidates'],
+    example: { project: 'Benefits adviser platform', desc: 'Adviser\'s force rank: 1. Case, 2. Application, 3. Claimant, 4. Document, 5. Note, 6. Benefit Scheme, 7. Organisation, 8. Communication, 9. Decision. Cases drive the nav; Benefit Scheme is settings-level.' },
+    standalone: 'Use force ranking to challenge an existing navigation design. If the primary nav item doesn\'t match the top-ranked object, there\'s a misalignment worth investigating.'
+  },
+  {
+    phase: 'p5',
+    num: 14, name: 'Force rank CTAs per object',
+    tagline: 'What is the most important action on each object?',
+    overview: 'For each object, put its CTAs in strict rank order. The top CTA is the primary action — it gets the primary button treatment. Second and third CTAs are secondary actions. Everything below that is tertiary or destructive. This maps directly to button hierarchy in your UI.',
+    tip: 'If you can\'t rank the CTAs, it means you don\'t understand the user\'s primary job-to-be-done for that object. Go back to your user research. The most common action is not always the most important one.',
+    trips: ['Making two CTAs equally primary — forces a hard design conversation', 'Ranking by frequency rather than importance', 'Forgetting that different roles may have different CTA rankings'],
+    checklist: ['CTAs ranked for every object', 'Primary CTA (rank 1) identified per object', 'Secondary CTAs (rank 2-3) identified', 'Destructive CTAs placed at bottom of rank or handled separately'],
+    example: { project: 'Benefits adviser platform', desc: 'Application CTAs ranked: 1. Approve Application, 2. Request More Information, 3. Reject Application, 4. Reassign to Adviser, 5. Add Note, 6. Withdraw Application (destructive — separated). This drives button hierarchy on the Application screen.' },
+    standalone: 'CTA ranking is the direct input for a button hierarchy audit. Review every screen and check that the primary button matches rank 1 — a mismatch reveals misaligned design assumptions.'
+  },
+  {
+    phase: 'p5',
+    num: 15, name: 'Force rank attributes per object',
+    tagline: 'The final content hierarchy',
+    overview: 'The last force ranking: put all attributes for each object in strict rank order. This is your definitive content hierarchy — what appears first, most prominently, and in what groupings. Every design decision from layout to typography should reflect this ranking.',
+    tip: 'The top 3 ranked attributes should be immediately visible without scrolling in any view. If your wireframe has something ranked 8th appearing above something ranked 2nd, that\'s a design bug — not a creative choice.',
+    trips: ['Designing first, then trying to reverse-engineer rankings to match', 'Ranking all attributes as "important" — be ruthless', 'Ignoring the ranking in actual screen design (defeats the whole exercise)'],
+    checklist: ['All attributes ranked for every object', 'Rankings validated against user decision-making needs', 'Top 3 attributes confirmed as above-the-fold in all views', 'Rankings used as a critique checklist for wireframes'],
+    example: { project: 'Benefits adviser platform', desc: 'Application attributes ranked: 1. Status, 2. Claimant name, 3. Benefit Scheme, 4. Submission date, 5. Days waiting, 6. Assigned Adviser, 7. Last activity, 8. Application ID. The Application header component is designed in this exact priority order.' },
+    standalone: 'Attribute ranking is the most powerful standalone artefact for design critique. Pin it next to every screen review and enforce it. It prevents "let\'s make the logo bigger" style debates by grounding visual hierarchy in user need.'
+  }
+];
+
+const phaseColors = { p1: '#7F77DD', p2: '#1D9E75', p3: '#D85A30', p4: '#BA7517', p5: '#378ADD' };
+const phaseNames = {
+  p1: 'Phase 1 — Objects',
+  p2: 'Phase 2 — Relationships',
+  p3: 'Phase 3 — Calls to action',
+  p4: 'Phase 4 — Attributes',
+  p5: 'Phase 5 — Force rank'
+};
+
+let completedSteps = new Set();
+
+function buildStep(step) {
+  return `
+    <div class="step-card phase-${step.phase}" id="step-${step.num}" data-phase="${step.phase}">
+      <div class="step-header" onclick="toggleStep(${step.num})">
+        <div class="step-num">${step.num}</div>
+        <div class="step-meta">
+          <div class="step-name">${step.name}</div>
+          <div class="step-tagline">${step.tagline}</div>
+        </div>
+        <div class="step-right">
+          <div class="chevron">▾</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="showTab(${step.num},'overview',this)">Overview</button>
+          <button class="tab-btn" onclick="showTab(${step.num},'tips',this)">Pro tips</button>
+          <button class="tab-btn" onclick="showTab(${step.num},'trips',this)">Tripping points</button>
+          <button class="tab-btn" onclick="showTab(${step.num},'checklist',this)">Checklist</button>
+          <button class="tab-btn" onclick="showTab(${step.num},'example',this)">Example</button>
+        </div>
+        <div class="tab-panel active" id="tab-${step.num}-overview">
+          <p class="prose">${step.overview}</p>
+        </div>
+        <div class="tab-panel" id="tab-${step.num}-tips">
+          <div class="pro-tip">
+            <div class="pro-tip-label">Pro tip</div>
+            <p>${step.tip}</p>
+          </div>
+        </div>
+        <div class="tab-panel" id="tab-${step.num}-trips">
+          ${step.trips.map(t => `<div class="trip-point"><div class="trip-label">Watch out</div><p>${t}</p></div>`).join('')}
+        </div>
+        <div class="tab-panel" id="tab-${step.num}-checklist">
+          <ul class="checklist" id="checklist-${step.num}">
+            ${step.checklist.map(item => `<li onclick="toggleCheck(this)"><div class="check-box"></div><span>${item}</span></li>`).join('')}
+          </ul>
+        </div>
+        <div class="tab-panel" id="tab-${step.num}-example">
+          <div class="example-box">
+            <div class="example-label">Example project</div>
+            <div class="example-title">${step.example.project}</div>
+            <div class="example-text">${step.example.desc}</div>
+          </div>
+          <div class="example-box">
+            <div class="example-label">Standalone use</div>
+            <div class="example-text">${step.standalone}</div>
+            <span class="standalone-tag">Standalone deliverable</span>
+          </div>
+        </div>
+        <button class="mark-done-btn" onclick="markDone(${step.num}, this)">Mark step done</button>
+      </div>
+    </div>
+  `;
+}
+
+function render() {
+  let html = '';
+  let lastPhase = null;
+  STEPS.forEach(step => {
+    if (step.phase !== lastPhase) {
+      html += `<div class="phase-label" data-phase="${step.phase}" style="color:${phaseColors[step.phase]}">${phaseNames[step.phase]}</div>`;
+      lastPhase = step.phase;
+    }
+    html += buildStep(step);
+  });
+  document.getElementById('stepsList').innerHTML = html;
+}
+
+function toggleStep(num) {
+  const card = document.getElementById('step-' + num);
+  const wasOpen = card.classList.contains('open');
+  document.querySelectorAll('.step-card.open').forEach(c => c.classList.remove('open'));
+  if (!wasOpen) card.classList.add('open');
+}
+
+function showTab(stepNum, tabName, btn) {
+  const card = document.getElementById('step-' + stepNum);
+  card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  card.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + stepNum + '-' + tabName).classList.add('active');
+}
+
+function toggleCheck(li) {
+  li.classList.toggle('checked');
+  li.querySelector('.check-box').textContent = li.classList.contains('checked') ? '✓' : '';
+}
+
+function markDone(num, btn) {
+  if (completedSteps.has(num)) {
+    completedSteps.delete(num);
+    btn.textContent = 'Mark step done';
+    btn.classList.remove('done');
+    const badge = document.getElementById('step-' + num).querySelector('.done-badge');
+    if (badge) badge.remove();
+  } else {
+    completedSteps.add(num);
+    btn.textContent = '✓ Marked done';
+    btn.classList.add('done');
+    const right = document.getElementById('step-' + num).querySelector('.step-right');
+    if (!right.querySelector('.done-badge')) {
+      const badge = document.createElement('div');
+      badge.className = 'done-badge';
+      badge.textContent = '✓';
+      right.insertBefore(badge, right.querySelector('.chevron'));
+    }
+  }
+  updateProgress();
+}
+
+function updateProgress() {
+  const pct = Math.round((completedSteps.size / 15) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = completedSteps.size + ' / 15 done';
+}
+
+function filterPhase(phase, btn) {
+  document.querySelectorAll('.phase-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.step-card').forEach(card => {
+    card.classList.toggle('hidden', phase !== 'all' && card.dataset.phase !== phase);
+  });
+  document.querySelectorAll('.phase-label').forEach(label => {
+    label.classList.toggle('hidden', phase !== 'all' && label.dataset.phase !== phase);
+  });
+}
+
+render();
+</script>
+</body>
+</html>
