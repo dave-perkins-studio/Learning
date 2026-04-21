@@ -1,425 +1,645 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORCA Process — OOUX Interactive Guide</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORCA Process — OOUX Interactive Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --purple-50: #EEEDFE; --purple-100: #CECBF6; --purple-200: #AFA9EC;
-  --purple-400: #7F77DD; --purple-600: #534AB7; --purple-800: #3C3489; --purple-900: #26215C;
-  --teal-50: #E1F5EE; --teal-100: #9FE1CB; --teal-200: #5DCAA5;
-  --teal-400: #1D9E75; --teal-600: #0F6E56; --teal-800: #085041;
-  --coral-50: #FAECE7; --coral-100: #F5C4B3; --coral-200: #F0997B;
-  --coral-400: #D85A30; --coral-600: #993C1D; --coral-800: #712B13;
-  --amber-50: #FAEEDA; --amber-100: #FAC775; --amber-200: #EF9F27;
-  --amber-600: #854F0B; --amber-800: #633806;
-  --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-200: #B4B2A9;
-  --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441;
-  --blue-50: #E6F1FB; --blue-100: #B5D4F4; --blue-400: #378ADD;
-  --blue-600: #185FA5; --blue-800: #0C447C;
+        :root {
+            --purple-50: #EEEDFE; --purple-100: #CECBF6; --purple-200: #AFA9EC;
+            --purple-400: #7F77DD; --purple-600: #534AB7; --purple-800: #3C3489; --purple-900: #26215C;
+            --teal-50: #E1F5EE; --teal-100: #9FE1CB; --teal-200: #5DCAA5;
+            --teal-400: #1D9E75; --teal-600: #0F6E56; --teal-800: #085041;
+            --coral-50: #FAECE7; --coral-100: #F5C4B3; --coral-200: #F0997B;
+            --coral-400: #D85A30; --coral-600: #993C1D; --coral-800: #712B13;
+            --amber-50: #FAEEDA; --amber-100: #FAC775; --amber-200: #EF9F27;
+            --amber-600: #854F0B; --amber-800: #633806;
+            --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-200: #B4B2A9;
+            --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441;
+            --blue-50: #E6F1FB; --blue-100: #B5D4F4; --blue-400: #378ADD;
+            --blue-600: #185FA5; --blue-800: #0C447C;
 
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f4f0;
-  --bg-tertiary: #f0efe9;
-  --text-primary: #1a1a18;
-  --text-secondary: #5a5a56;
-  --border-light: rgba(0,0,0,0.1);
-  --border-medium: rgba(0,0,0,0.18);
-}
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f4f0;
+            --bg-tertiary: #f0efe9;
+            --text-primary: #1a1a18;
+            --text-secondary: #5a5a56;
+            --border-light: rgba(0,0,0,0.1);
+            --border-medium: rgba(0,0,0,0.18);
+        }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #1e1e1c;
-    --bg-secondary: #252522;
-    --bg-tertiary: #2c2c29;
-    --text-primary: #f0efe9;
-    --text-secondary: #a0a09a;
-    --border-light: rgba(255,255,255,0.1);
-    --border-medium: rgba(255,255,255,0.18);
-    --purple-50: #26215C; --purple-100: #3C3489; --purple-200: #534AB7;
-    --purple-800: #CECBF6; --purple-600: #AFA9EC;
-    --teal-50: #04342C; --teal-600: #9FE1CB; --teal-800: #E1F5EE;
-    --coral-50: #4A1B0C; --coral-600: #F0997B; --coral-800: #F5C4B3;
-    --amber-50: #412402; --amber-600: #FAC775; --amber-800: #FAEEDA;
-    --blue-50: #042C53; --blue-600: #B5D4F4; --blue-800: #E6F1FB;
-    --gray-50: #2C2C2A; --gray-400: #888780;
-  }
-}
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #1e1e1c;
+                --bg-secondary: #252522;
+                --bg-tertiary: #131312;
+                --text-primary: #f0efe9;
+                --text-secondary: #a0a09a;
+                --border-light: rgba(255,255,255,0.1);
+                --border-medium: rgba(255,255,255,0.18);
+                --purple-50: #26215C; --purple-800: #CECBF6; --purple-600: #AFA9EC;
+                --teal-50: #04342C; --teal-600: #9FE1CB;
+                --coral-50: #4A1B0C; --coral-600: #F0997B;
+                --amber-50: #412402; --amber-600: #FAC775;
+                --blue-50: #042C53; --blue-600: #B5D4F4;
+            }
+        }
 
-html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; }
 
-body {
-  font-family: 'Atkinson Hyperlegible', Georgia, serif;
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  line-height: 1.6;
-}
+        body {
+            font-family: 'Atkinson Hyperlegible', sans-serif;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
 
-.page-wrap {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
-}
+        .page-wrap {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 5rem;
+        }
 
-.header {
-  padding: 2.5rem 2rem 2rem;
-  background: var(--bg-primary);
-  border-radius: 8px;
-  border: 0.5px solid var(--border-light);
-  margin-bottom: 1.5rem;
-}
+        /* Header Styles */
+        .header {
+            padding: 2.5rem;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
 
-.header-eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--purple-600);
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-}
+        .header-eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--purple-600);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
 
-.header h1 {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--text-primary);
-  margin-bottom: 0.8rem;
-}
+        .header h1 {
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
 
-.header-desc {
-  font-size: 16px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 620px;
-  margin-bottom: 2rem;
-}
+        .header-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin-bottom: 2rem;
+        }
 
-.phase-nav {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-}
+        /* Navigation and Progress */
+        .phase-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
 
-.phase-btn {
-  font-family: 'Atkinson Hyperlegible', serif;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: 1.5px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
+        .phase-btn {
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+        }
 
-.phase-btn.all { background: var(--purple-800); color: #fff; border-color: var(--purple-800); }
-.phase-btn.p1 { background: var(--purple-50); color: var(--purple-800); border-color: var(--purple-200); }
-.phase-btn.p2 { background: var(--teal-50); color: var(--teal-600); border-color: var(--teal-200); }
-.phase-btn.p3 { background: var(--coral-50); color: var(--coral-600); border-color: var(--coral-200); }
-.phase-btn.p4 { background: var(--amber-50); color: var(--amber-600); border-color: var(--amber-100); }
-.phase-btn.p5 { background: var(--blue-50); color: var(--blue-600); border-color: var(--blue-100); }
+        .phase-btn.active { outline: 3px solid var(--purple-400); outline-offset: 2px; }
+        .phase-btn.all.active { background: var(--purple-800); color: #fff; }
+        .phase-btn.p1 { background: var(--purple-50); color: var(--purple-800); }
+        .phase-btn.p2 { background: var(--teal-50); color: var(--teal-600); }
+        .phase-btn.p3 { background: var(--coral-50); color: var(--coral-600); }
+        .phase-btn.p4 { background: var(--amber-50); color: var(--amber-600); }
+        .phase-btn.p5 { background: var(--blue-50); color: var(--blue-600); }
 
-.phase-btn:hover { opacity: 0.8; transform: translateY(-1px); }
-.phase-btn.active { outline: 3px solid var(--purple-400); outline-offset: 2px; }
+        .progress-wrap { display: flex; align-items: center; gap: 15px; }
+        .progress-bar { flex: 1; height: 10px; background: var(--bg-secondary); border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--purple-400), var(--teal-400)); width: 0%; transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+        .progress-label { font-size: 13px; font-weight: 700; min-width: 90px; text-align: right; color: var(--text-secondary); }
 
-.progress-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+        /* Step Cards */
+        .steps-list { display: flex; flex-direction: column; gap: 12px; }
+        
+        .phase-intro-block {
+            padding: 1.5rem 2rem;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            border-left: 6px solid var(--purple-400);
+            margin: 2rem 0 1rem;
+        }
+        
+        .phase-intro-block[data-phase="p2"] { border-color: var(--teal-400); }
+        .phase-intro-block[data-phase="p3"] { border-color: var(--coral-400); }
+        .phase-intro-block[data-phase="p4"] { border-color: var(--amber-200); }
+        .phase-intro-block[data-phase="p5"] { border-color: var(--blue-400); }
 
-.progress-bar {
-  flex: 1;
-  height: 8px;
-  background: var(--bg-secondary);
-  border-radius: 4px;
-  overflow: hidden;
-}
+        .phase-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 15px; margin-bottom: 0.5rem;}
+        .phase-intro-text { font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; }
+        
+        .step-card { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 10px; overflow: hidden; transition: 0.2s; }
+        .step-card:hover { border-color: var(--border-medium); }
+        .step-header { display: flex; align-items: center; gap: 16px; padding: 20px; cursor: pointer; user-select: none; }
+        .step-num { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+        
+        .phase-p1 .step-num { background: var(--purple-100); color: var(--purple-800); }
+        .phase-p2 .step-num { background: var(--teal-100); color: var(--teal-600); }
+        .phase-p3 .step-num { background: var(--coral-100); color: var(--coral-600); }
+        .phase-p4 .step-num { background: var(--amber-100); color: var(--amber-800); }
+        .phase-p5 .step-num { background: var(--blue-100); color: var(--blue-600); }
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--purple-400), var(--teal-400));
-  border-radius: 4px;
-  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  width: 0%;
-}
+        .step-meta { flex: 1; }
+        .step-name { font-size: 17px; font-weight: 700; }
+        .step-tagline { font-size: 13px; color: var(--text-secondary); }
+        .chevron { transition: 0.3s; color: var(--text-secondary); }
+        .step-card.open .chevron { transform: rotate(180deg); }
 
-.progress-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-secondary);
-  min-width: 80px;
-  text-align: right;
-}
+        .step-body { display: none; padding: 0 20px 20px; border-top: 1px solid var(--border-light); }
+        .step-card.open .step-body { display: block; }
 
-.steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+        .tab-bar { display: flex; gap: 8px; margin: 15px 0; border-bottom: 1px solid var(--border-light); overflow-x: auto; }
+        .tab-btn { background: none; border: none; padding: 10px 14px; font-size: 13px; font-weight: 700; color: var(--text-secondary); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+        .tab-btn.active { color: var(--purple-600); border-bottom-color: var(--purple-600); }
 
-.phase-label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 24px 0 8px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+        .tab-panel { display: none; padding: 10px 0; }
+        .tab-panel.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.phase-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border-light);
-}
+        .prose { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+        .pro-tip { background: var(--purple-50); border-left: 4px solid var(--purple-400); padding: 16px; border-radius: 4px; margin-bottom: 10px; }
+        .trip-point { background: var(--coral-50); border-left: 4px solid var(--coral-400); padding: 12px 16px; margin-bottom: 10px; border-radius: 4px; }
+        
+        .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .checklist li { display: flex; gap: 12px; cursor: pointer; font-size: 14px; }
+        .checklist li.checked { color: var(--gray-400); text-decoration: line-through; }
+        .check-box { width: 18px; height: 18px; border: 2px solid var(--border-medium); border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+        .checklist li.checked .check-box { background: var(--teal-400); border-color: var(--teal-400); color: #fff; }
 
-.step-card {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.2s ease;
-}
+        .example-box { background: var(--bg-secondary); padding: 16px; border-radius: 8px; margin-bottom: 12px; }
+        .example-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--gray-400); margin-bottom: 6px; }
+        
+        .mark-done-btn { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-medium); background: var(--bg-primary); font-weight: 700; cursor: pointer; margin-top: 20px; transition: 0.2s; }
+        .mark-done-btn.done { background: var(--teal-50); color: var(--teal-600); border-color: var(--teal-400); }
+        .done-badge { background: var(--teal-400); color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 10px; }
 
-.step-card:hover { border-color: var(--border-medium); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        /* Footer Hub Improvements */
+        .footer-hub { margin-top: 5rem; display: flex; flex-direction: column; gap: 3rem; }
+        .footer-section { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 12px; padding: 2.5rem; }
+        .section-header { margin-bottom: 2rem; }
+        .section-title { font-size: 24px; font-weight: 700; }
+        
+        .glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+        .glossary-term { display: block; font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--purple-600); margin-bottom: 6px; letter-spacing: 0.05em; }
+        .glossary-def { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-.step-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 20px;
-  cursor: pointer;
-}
+        .ref-compact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+        .ref-link-card { display: flex; align-items: center; gap: 15px; padding: 16px; background: var(--bg-secondary); border-radius: 10px; text-decoration: none; border: 1px solid transparent; transition: 0.2s; }
+        .ref-link-card:hover { background: var(--purple-50); border-color: var(--purple-200); transform: translateY(-3px); }
+        .ref-icon { font-size: 24px; }
+        .ref-content strong { display: block; font-size: 15px; color: var(--text-primary); }
+        .ref-content span { font-size: 12px; color: var(--text-secondary); }
 
-.step-num {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
+        .author-plate { display: flex; align-items: center; gap: 20px; padding-top: 2rem; border-top: 1px solid var(--border-light); }
+        .author-avatar { width: 56px; height: 56px; background: var(--purple-600); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; flex-shrink: 0; }
+        .author-name { font-weight: 700; font-size: 17px; }
+        .author-tagline { font-size: 14px; color: var(--text-secondary); }
+        .social-btn { font-size: 13px; font-weight: 700; color: var(--purple-600); text-decoration: none; padding: 8px 16px; border: 1.5px solid var(--purple-200); border-radius: 25px; transition: 0.2s; margin-left: auto; }
+        .social-btn:hover { background: var(--purple-600); color: #fff; }
 
-.phase-p1 .step-num { background: var(--purple-100); color: var(--purple-800); }
-.phase-p2 .step-num { background: var(--teal-100); color: var(--teal-800); }
-.phase-p3 .step-num { background: var(--coral-100); color: var(--coral-800); }
-.phase-p4 .step-num { background: var(--amber-100); color: var(--amber-800); }
-.phase-p5 .step-num { background: var(--blue-100); color: var(--blue-800); }
+        .final-legal { text-align: center; font-size: 12px; color: var(--gray-400); padding: 2rem 0; }
+        .hidden { display: none !important; }
 
-.step-meta { flex: 1; }
-.step-name { font-size: 16px; font-weight: 700; color: var(--text-primary); }
-.step-tagline { font-size: 13px; color: var(--text-secondary); }
-
-.chevron { transition: transform 0.3s; font-size: 16px; color: var(--text-secondary); }
-.step-card.open .chevron { transform: rotate(180deg); }
-
-.step-body {
-  display: none;
-  padding: 0 20px 20px;
-  border-top: 1px solid var(--border-light);
-}
-.step-card.open .step-body { display: block; }
-
-.tab-bar {
-  display: flex;
-  gap: 4px;
-  margin: 16px 0;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.tab-btn {
-  background: none; border: none; padding: 8px 12px; font-size: 13px; font-weight: 700;
-  color: var(--text-secondary); cursor: pointer; border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-}
-
-.tab-btn.active { color: var(--purple-600); border-bottom-color: var(--purple-600); }
-
-.tab-panel { display: none; padding-top: 4px; }
-.tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-.prose { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
-
-.pro-tip { background: var(--purple-50); border-left: 4px solid var(--purple-400); padding: 16px; border-radius: 4px; }
-.trip-point { background: var(--coral-50); border-left: 4px solid var(--coral-400); padding: 12px 16px; margin-bottom: 8px; border-radius: 4px; }
-
-.checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.checklist li { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; font-size: 14px; }
-.checklist li.checked { color: var(--gray-400); text-decoration: line-through; }
-.check-box { width: 18px; height: 18px; border: 2px solid var(--border-medium); border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; }
-.checklist li.checked .check-box { background: var(--teal-400); border-color: var(--teal-400); color: white; }
-
-.example-box { background: var(--bg-secondary); padding: 16px; border-radius: 6px; margin-bottom: 12px; }
-.example-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--gray-400); margin-bottom: 4px; }
-.example-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
-
-.mark-done-btn {
-  margin-top: 20px; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border-medium);
-  background: white; font-weight: 700; cursor: pointer; transition: all 0.2s; width: 100%;
-}
-.mark-done-btn.done { background: var(--teal-50); border-color: var(--teal-400); color: var(--teal-600); }
-
-.done-badge { background: var(--teal-400); color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 8px; }
-
-.hidden { display: none !important; }
-</style>
+        @media (max-width: 600px) {
+            .header { padding: 1.5rem; }
+            .author-plate { flex-direction: column; text-align: center; }
+            .social-btn { margin: 10px auto 0; }
+        }
+    </style>
 </head>
 <body>
 
 <div class="page-wrap">
-  <div class="header">
-    <div class="header-eyebrow">OOUX Framework</div>
-    <h1>The ORCA Process</h1>
-    <p class="header-desc">A complete 15-step methodology for Object-Oriented UX design. Work through each step to structure complex systems around objects—before wireframing.</p>
+    <header class="header">
+        <div class="header-eyebrow">OOUX Framework</div>
+        <h1>The ORCA Process</h1>
+        <p class="header-desc">A 15-step methodology to structure complex systems around objects users care about—ensuring your architecture is intuitive before you ever draw a screen.</p>
 
-    <div class="phase-nav">
-      <button class="phase-btn all active" onclick="filterPhase('all', this)">All Steps</button>
-      <button class="phase-btn p1" onclick="filterPhase('p1', this)">1. Objects</button>
-      <button class="phase-btn p2" onclick="filterPhase('p2', this)">2. Relationships</button>
-      <button class="phase-btn p3" onclick="filterPhase('p3', this)">3. CTAs</button>
-      <button class="phase-btn p4" onclick="filterPhase('p4', this)">4. Attributes</button>
-      <button class="phase-btn p5" onclick="filterPhase('p5', this)">5. Priority</button>
-    </div>
+        <nav class="phase-nav">
+            <button class="phase-btn all active" onclick="filterPhase('all', this)">All Steps</button>
+            <button class="phase-btn p1" onclick="filterPhase('p1', this)">1. Objects</button>
+            <button class="phase-btn p2" onclick="filterPhase('p2', this)">2. Relationships</button>
+            <button class="phase-btn p3" onclick="filterPhase('p3', this)">3. CTAs</button>
+            <button class="phase-btn p4" onclick="filterPhase('p4', this)">4. Attributes</button>
+            <button class="phase-btn p5" onclick="filterPhase('p5', this)">5. Priority</button>
+        </nav>
 
-    <div class="progress-wrap">
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <span class="progress-label" id="progressLabel">0 / 15 done</span>
-    </div>
-  </div>
+        <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <span class="progress-label" id="progressLabel">0 / 15 done</span>
+        </div>
+    </header>
 
-  <div class="steps-list" id="stepsList"></div>
+    <main class="steps-list" id="stepsList"></main>
+
+    <footer class="footer-hub">
+        <section class="footer-section">
+            <div class="section-header">
+                <div class="header-eyebrow">Vocabulary</div>
+                <h2 class="section-title">ORCA Glossary</h2>
+            </div>
+            <div class="glossary-grid">
+                <div class="glossary-item">
+                    <span class="glossary-term">Object</span>
+                    <p class="glossary-def">The "nouns" of your system. Persistent entities that users interact with and care about.</p>
+                </div>
+                <div class="glossary-item">
+                    <span class="glossary-term">Relationship</span>
+                    <p class="glossary-def">How objects connect to one another, defined by direction and cardinality (e.g., 1-to-many).</p>
+                </div>
+                <div class="glossary-item">
+                    <span class="glossary-term">CTA</span>
+                    <p class="glossary-def">Calls to Action (the "verbs"). Actions that users or the system perform on specific objects.</p>
+                </div>
+                <div class="glossary-item">
+                    <span class="glossary-term">Attribute</span>
+                    <p class="glossary-def">The "adjectives" or data points. Information that describes or defines an object's state.</p>
+                </div>
+                <div class="glossary-item">
+                    <span class="glossary-term">Nested Object</span>
+                    <p class="glossary-def">A relationship where one object is visually or logically contained within a parent view.</p>
+                </div>
+                <div class="glossary-item">
+                    <span class="glossary-term">Force Rank</span>
+                    <p class="glossary-def">A strict prioritization method requiring a unique rank for every item—no ties allowed.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="footer-section">
+            <div class="section-header">
+                <div class="header-eyebrow">Deep Dive</div>
+                <h2 class="section-title">OOUX Ecosystem</h2>
+            </div>
+            <div class="ref-compact-grid">
+                <a href="https://www.ooux.com" target="_blank" class="ref-link-card">
+                    <div class="ref-icon">🌐</div>
+                    <div class="ref-content"><strong>OOUX.com</strong><span>The official home of the framework</span></div>
+                </a>
+                <a href="https://www.ooux.com/orca" target="_blank" class="ref-link-card">
+                    <div class="ref-icon">🐋</div>
+                    <div class="ref-content"><strong>ORCA Resources</strong><span>Templates and deep-dive guides</span></div>
+                </a>
+                <a href="https://www.ooux.com/certify" target="_blank" class="ref-link-card">
+                    <div class="ref-icon">🎓</div>
+                    <div class="ref-content"><strong>Certification</strong><span>Professional OOUX strategist training</span></div>
+                </a>
+                <a href="https://www.amazon.com/dp/B09HCVB5VZ" target="_blank" class="ref-link-card">
+                    <div class="ref-icon">📖</div>
+                    <div class="ref-content"><strong>Foundational Book</strong><span>Designing Connected Content</span></div>
+                </a>
+            </div>
+            <div class="author-plate">
+                <div class="author-avatar">SP</div>
+                <div class="author-info">
+                    <p class="author-name">Sophia Prater</p>
+                    <p class="author-tagline">Creator of OOUX & the ORCA Process · Strategist & Educator</p>
+                </div>
+                <a href="https://www.linkedin.com/in/sophiaprater" target="_blank" class="social-btn">LinkedIn →</a>
+            </div>
+        </section>
+
+        <p class="final-legal">Interactive reference guide built for the design community. ORCA and OOUX are frameworks developed by Sophia Prater.</p>
+    </footer>
 </div>
 
 <script>
-// Data from previous steps included... (STEPS array here)
-// Adding persistence and UI logic
-let completedSteps = JSON.parse(localStorage.getItem('orca-progress')) || [];
-let checkedItems = JSON.parse(localStorage.getItem('orca-checks')) || {};
+const PHASE_OVERVIEWS = {
+    p1: "Phase 1 is about **Discovery and Definition**. We mine our source material for nouns to find candidate objects, give them crisp definitions to ensure team alignment, and ruthlessly filter out non-objects (like UI components or statuses).",
+    p2: "Phase 2 focuses on **System Architecture**. We map the directional relationships between our objects, identify nested containment, and surface complex business rules that govern how data is connected.",
+    p3: "Phase 3 defines **Interaction and Flow**. We identify the verbs (CTAs) for every object, decide where they live in the UI architecture, and map out exactly what happens when a user takes action.",
+    p4: "Phase 4 details the **Content and Data**. We list every attribute needed to describe our objects, prioritize them based on user goals, and map them to specific UI views (cards, details, forms).",
+    p5: "Phase 5 provides **Visual Hierarchy**. We use strict force-ranking for objects, CTAs, and attributes to create a definitive design spec that ensures the most important things are always most prominent."
+};
+
+const STEPS = [
+  {
+    phase: 'p1',
+    num: 1, name: 'Identify candidate objects',
+    tagline: 'Mine your content for nouns',
+    overview: 'Gather everything you know about the system — briefs, user research, existing flows — and extract all the nouns. Every person, place, thing, or concept is a candidate. Cast wide now; refine later.',
+    tip: 'Colour-code your nouns as you pull them out of source material. Nouns that appear frequently across multiple sources are almost certainly real objects.',
+    trips: ['Including verbs as objects — "search" is a CTA, not an object', 'Conflating UI elements (modals, pages) with domain objects'],
+    checklist: ['All source material reviewed', 'Every noun extracted and listed', 'No filtering yet — keep everything for now'],
+    example: { project: 'Adviser Platform', desc: 'Candidate objects: Claimant, Case, Application, Benefit, Document, Note, Decision.' },
+    standalone: 'Use this alone to audit an existing IA to find gaps in what the system currently handles.'
+  },
+  {
+    phase: 'p1',
+    num: 2, name: 'Define objects',
+    tagline: 'Give each object a crisp definition',
+    overview: 'Write a plain-English definition for each object. If you can\'t define it, it\'s not a real object. This forces clarity and shared vocabulary across the team.',
+    tip: 'A good definition fits: "A [object] is a [category] that [distinguishing characteristic]."',
+    trips: ['Writing definitions that describe UI instead of the object', 'Using technical jargon instead of plain language'],
+    checklist: ['Every object has a one-sentence definition', 'Definitions distinguish objects from similar items', 'Team has agreed on these definitions'],
+    example: { project: 'Adviser Platform', desc: 'Case: A container grouping all information related to a single claimant\'s service contact.' },
+    standalone: 'Great for creating a shared vocabulary document to align engineering and design.'
+  },
+  {
+    phase: 'p1',
+    num: 3, name: 'Remove non-objects',
+    tagline: 'Cull the list with discipline',
+    overview: 'Filter ruthlessly. An object must exist over time and have attributes. Remove statuses, views, UI patterns, and CTAs.',
+    tip: 'Ask: "Can a user do something TO this?" If it\'s just a property of something else (like "Status"), it\'s not an object.',
+    trips: ['Keeping "Pending" as an object rather than an attribute', 'Keeping "Dashboard" as an object'],
+    checklist: ['Statuses removed', 'UI constructs removed', 'CTAs moved to separate list'],
+    example: { project: 'Adviser Platform', desc: 'Removed: "Pending" (status), "Inbox" (view), "Submit" (CTA).' },
+    standalone: 'Use to reclassify navigation items and find a more object-centered IA.'
+  },
+  {
+    phase: 'p2',
+    num: 4, name: 'Map object relationships',
+    tagline: 'Draw the connections',
+    overview: 'Determine if a relationship exists between each pair of objects. Define cardinality: one-to-one, one-to-many, or many-to-many.',
+    tip: 'Don\'t get bogged down in database precision yet. Sketch in plain English: "A Case has many Applications."',
+    trips: ['Modelling like a DB designer instead of a UX designer', 'Missing inverse relationships'],
+    checklist: ['Every pair checked for relationships', 'Cardinality noted for each', 'Directional language used'],
+    example: { project: 'Adviser Platform', desc: 'Claimant has many Cases. Case has many Applications. Application belongs to one Scheme.' },
+    standalone: 'Present this map to engineering to validate system logic before wireframing.'
+  },
+  {
+    phase: 'p2',
+    num: 5, name: 'Identify nested objects',
+    tagline: 'Find containment and composition',
+    overview: 'Determine which objects live "inside" others. These often don\'t need their own top-level navigation.',
+    tip: 'Ask: "Does this object make sense without its parent?" If a Note only makes sense inside a Case, it is nested.',
+    trips: ['Treating all ownership as nesting', 'Nesting objects that need standalone access'],
+    checklist: ['Nested objects documented with parents', 'Decision recorded for each', 'UI implications noted'],
+    example: { project: 'Adviser Platform', desc: 'Note is nested within Case. Document is NOT nested (needs standalone library access).' },
+    standalone: 'Use this to trim bloated sitemaps by identifying items that don\'t need top-level nav.'
+  },
+  {
+    phase: 'p2',
+    num: 6, name: 'Define relationship rules',
+    tagline: 'State the business logic',
+    overview: 'Surface the rules: Can a Claimant have multiple active Cases? Who can break a relationship? Surface these now to avoid redesigns.',
+    tip: 'Frame questions as: "Can a document be attached to more than one case?"',
+    trips: ['Assuming rules without asking stakeholders', 'Missing temporal rules (changes over time)'],
+    checklist: ['Rules documented for every relationship', 'Permission rules captured', 'Validated with domain experts'],
+    example: { project: 'Adviser Platform', desc: 'A Claimant can have only one active Case at a time.' },
+    standalone: 'These rules become perfect acceptance criteria for Jira tickets.'
+  },
+  {
+    phase: 'p3',
+    num: 7, name: 'Identify CTAs per object',
+    tagline: 'What can users DO?',
+    overview: 'List every action a user can perform on an object. These are your system\'s verbs and future buttons.',
+    tip: 'A CTA always has an object: "Submit [Application]". If you can\'t name the object, it\'s just a vague feature.',
+    trips: ['Confusing system events with user CTAs', 'Adding navigation ("Go to") as a CTA'],
+    checklist: ['CTAs listed for every object', 'Written as verb + object', 'User CTAs distinguished from system CTAs'],
+    example: { project: 'Adviser Platform', desc: 'Case CTAs: Assign Case, Close Case, Merge Case.' },
+    standalone: 'Use as source of truth for task analysis and prioritizing UI real estate.'
+  },
+  {
+    phase: 'p3',
+    num: 8, name: 'Assign CTAs to views',
+    tagline: 'Decide where actions live',
+    overview: 'Decide where the button goes: Detail view? List view? This starts UI architecture without drawing.',
+    tip: 'Place the CTA closest to the object it affects. "Approve Application" lives on the Application, not the Case.',
+    trips: ['Putting CTAs on the wrong object view', 'Duplicating CTAs across too many views'],
+    checklist: ['Each CTA assigned to a primary view', 'Conditional logic documented', 'Destructive actions flagged'],
+    example: { project: 'Adviser Platform', desc: '"Assign Case" lives on Case detail and Case list (for bulk assign).' },
+    standalone: 'Use to audit existing interfaces for orphaned or duplicated actions.'
+  },
+  {
+    phase: 'p3',
+    num: 9, name: 'Define CTA outcomes',
+    tagline: 'What happens next?',
+    overview: 'Define system changes and user feedback for every action. Spot flows that need extra design attention.',
+    tip: 'Outcomes often reveal missed objects (e.g., an "Approve" action might create a "Decision" object).',
+    trips: ['Only defining the happy path', 'Missing side effects on related objects'],
+    checklist: ['Primary outcome defined', 'State changes documented', 'Error cases captured'],
+    example: { project: 'Adviser Platform', desc: '"Approve" changes status to Approved and creates a Decision record.' },
+    standalone: 'Outcomes become the direct input for user flow mapping and service blueprints.'
+  },
+  {
+    phase: 'p4',
+    num: 10, name: 'Define attributes',
+    tagline: 'What data does it carry?',
+    overview: 'List all data fields (adjectives) for each object. This is the basis for forms, lists, and detail views.',
+    tip: 'Distinguish between core attributes (always there) and conditional ones (only there after a decision).',
+    trips: ['Confusing relationships with attributes', 'Missing derived/calculated attributes'],
+    checklist: ['All attributes listed', 'Data types noted (text, date, etc.)', 'Core vs Conditional marked'],
+    example: { project: 'Adviser Platform', desc: 'Application attributes: ID, Submission Date, Status, Assigned Adviser.' },
+    standalone: 'Use to write a content audit brief or define the data contract with engineering.'
+  },
+  {
+    phase: 'p4',
+    num: 11, name: 'Prioritise attributes',
+    tagline: 'Visual hierarchy start',
+    overview: 'Rank attributes by importance to the user. This determines what is visible on a card vs. a detail page.',
+    tip: 'Prioritize by role. An Adviser cares about deadlines; a Manager cares about case volume.',
+    trips: ['Giving everything "Primary" priority', 'Ignoring user research when ranking'],
+    checklist: ['Attributes ranked Primary/Secondary/Tertiary', 'Validated against user goals'],
+    example: { project: 'Adviser Platform', desc: 'Card view: Claimant Name, Status, Days Waiting. All other data is hidden.' },
+    standalone: 'This is your content hierarchy spec for design critiques.'
+  },
+  {
+    phase: 'p4',
+    num: 12, name: 'Map attributes to views',
+    tagline: 'The final spec',
+    overview: 'Connect attributes to their UI context (cards, detail views, forms).',
+    tip: 'If you have this, a dev could build the data layer without seeing a single wireframe.',
+    trips: ['Designing forms that capture attributes not in the model', 'Overloading list views'],
+    checklist: ['Card attributes defined', 'Form attributes marked as editable', 'Read-only states defined'],
+    example: { project: 'Adviser Platform', desc: 'Case detail view: Header has Status; Sidebar has Key Dates.' },
+    standalone: 'Hand this to engineering to define data requirements and prevent ambiguity.'
+  },
+  {
+    phase: 'p5',
+    num: 13, name: 'Force rank objects',
+    tagline: 'Navigation priority',
+    overview: 'Put objects in a strict order of importance. This informs your site\'s primary navigation.',
+    tip: 'Rank from the user perspective. What do they access most frequently?',
+    trips: ['Allowing ties', 'Ranking by business priority instead of user need'],
+    checklist: ['Strict rank assigned', 'Top 3 candidates for primary nav identified'],
+    example: { project: 'Adviser Platform', desc: '1. Case, 2. Application, 3. Claimant. Cases drive the main nav.' },
+    standalone: 'Use to challenge existing nav—if the top object isn\'t in the primary nav, there\'s a problem.'
+  },
+  {
+    phase: 'p5',
+    num: 14, name: 'Force rank CTAs',
+    tagline: 'Button hierarchy',
+    overview: 'Rank CTAs per object. The #1 rank is your primary button treatment.',
+    tip: 'If you can\'t rank them, you don\'t understand the user\'s job-to-be-done for that object.',
+    trips: ['Making two buttons equally primary', 'Ranking by frequency instead of importance'],
+    checklist: ['CTAs ranked 1-N for every object', 'Primary action identified'],
+    example: { project: 'Adviser Platform', desc: 'Application CTAs: 1. Approve, 2. Request Info, 3. Reject.' },
+    standalone: 'Input for a button hierarchy audit—ensures the visual weight matches the importance.'
+  },
+  {
+    phase: 'p5',
+    num: 15, name: 'Force rank attributes',
+    tagline: 'Definitive hierarchy',
+    overview: 'Rank every attribute in order. The top 3 should be visible without scrolling or interaction.',
+    tip: 'This is your "design bug" checklist. If rank #8 is above rank #2 in UI, it needs fixing.',
+    trips: ['Designing first, then ranking', 'Being too soft on the ranking'],
+    checklist: ['All attributes ranked', 'Used as a critique checklist for wireframes'],
+    example: { project: 'Adviser Platform', desc: 'Application header: Rank 1 (Status) is the largest text.' },
+    standalone: 'The most powerful tool for design critique—grounds visual choices in user need.'
+  }
+];
+
+const phaseColors = { p1: '#7F77DD', p2: '#1D9E75', p3: '#D85A30', p4: '#BA7517', p5: '#378ADD' };
+const phaseNames = { p1: 'Phase 1 — Objects', p2: 'Phase 2 — Relationships', p3: 'Phase 3 — CTAs', p4: 'Phase 4 — Attributes', p5: 'Phase 5 — Priority' };
+
+let completedSteps = JSON.parse(localStorage.getItem('orca_progress')) || [];
+let checkedItems = JSON.parse(localStorage.getItem('orca_checks')) || {};
 
 function buildStep(step) {
-  const isDone = completedSteps.includes(step.num);
-  return `
-    <div class="step-card phase-${step.phase} ${isDone ? 'is-done' : ''}" id="step-${step.num}" data-phase="${step.phase}">
-      <div class="step-header" onclick="toggleStep(${step.num})">
-        <div class="step-num">${step.num}</div>
-        <div class="step-meta">
-          <div class="step-name">${step.name}</div>
-          <div class="step-tagline">${step.tagline}</div>
+    const isDone = completedSteps.includes(step.num);
+    return `
+        <div class="step-card phase-${step.phase} ${isDone ? 'is-done' : ''}" id="step-${step.num}" data-phase="${step.phase}">
+            <div class="step-header" onclick="toggleStep(${step.num})">
+                <div class="step-num">${step.num}</div>
+                <div class="step-meta">
+                    <div class="step-name">${step.name}</div>
+                    <div class="step-tagline">${step.tagline}</div>
+                </div>
+                <div style="display:flex; align-items:center;">
+                    ${isDone ? '<div class="done-badge">✓</div>' : ''}
+                    <div class="chevron">▾</div>
+                </div>
+            </div>
+            <div class="step-body">
+                <div class="tab-bar">
+                    <button class="tab-btn active" onclick="showTab(${step.num},'overview',this)">Overview</button>
+                    <button class="tab-btn" onclick="showTab(${step.num},'tips',this)">Tips & Trips</button>
+                    <button class="tab-btn" onclick="showTab(${step.num},'checklist',this)">Checklist</button>
+                    <button class="tab-btn" onclick="showTab(${step.num},'example',this)">Example</button>
+                </div>
+                <div class="tab-panel active" id="tab-${step.num}-overview">
+                    <p class="prose">${step.overview}</p>
+                </div>
+                <div class="tab-panel" id="tab-${step.num}-tips">
+                    <div class="pro-tip"><p>${step.tip}</p></div>
+                    ${step.trips.map(t => `<div class="trip-point"><p><strong>Watch out:</strong> ${t}</p></div>`).join('')}
+                </div>
+                <div class="tab-panel" id="tab-${step.num}-checklist">
+                    <ul class="checklist">
+                        ${step.checklist.map((item, i) => {
+                            const isChecked = checkedItems[`${step.num}-${i}`];
+                            return `<li class="${isChecked ? 'checked' : ''}" onclick="toggleCheck(${step.num}, ${i}, this)">
+                                <div class="check-box">${isChecked ? '✓' : ''}</div><span>${item}</span>
+                            </li>`;
+                        }).join('')}
+                    </ul>
+                </div>
+                <div class="tab-panel" id="tab-${step.num}-example">
+                    <div class="example-box">
+                        <div class="example-label">Context: ${step.example.project}</div>
+                        <p class="prose">${step.example.desc}</p>
+                    </div>
+                    <div class="example-box" style="border: 1px dashed var(--teal-200); background: var(--teal-50);">
+                        <div class="example-label" style="color:var(--teal-600)">Standalone Strategy</div>
+                        <p class="prose" style="color:var(--teal-800)">${step.standalone}</p>
+                    </div>
+                </div>
+                <button class="mark-done-btn ${isDone ? 'done' : ''}" onclick="markDone(${step.num}, this)">
+                    ${isDone ? '✓ Step Completed' : 'Mark Step as Done'}
+                </button>
+            </div>
         </div>
-        <div class="step-right" style="display:flex; align-items:center;">
-          ${isDone ? '<div class="done-badge">✓</div>' : ''}
-          <div class="chevron">▾</div>
-        </div>
-      </div>
-      <div class="step-body">
-        <div class="tab-bar">
-          <button class="tab-btn active" onclick="showTab(${step.num},'overview',this)">Overview</button>
-          <button class="tab-btn" onclick="showTab(${step.num},'tips',this)">Tips</button>
-          <button class="tab-btn" onclick="showTab(${step.num},'checklist',this)">Checklist</button>
-          <button class="tab-btn" onclick="showTab(${step.num},'example',this)">Example</button>
-        </div>
-        <div class="tab-panel active" id="tab-${step.num}-overview"><p class="prose">${step.overview}</p></div>
-        <div class="tab-panel" id="tab-${step.num}-tips">
-          <div class="pro-tip"><p>${step.tip}</p></div>
-          <div style="margin-top:12px">${step.trips.map(t => `<div class="trip-point"><p><strong>Watch out:</strong> ${t}</p></div>`).join('')}</div>
-        </div>
-        <div class="tab-panel" id="tab-${step.num}-checklist">
-          <ul class="checklist">
-            ${step.checklist.map((item, i) => {
-              const isChecked = checkedItems[`${step.num}-${i}`];
-              return `<li class="${isChecked ? 'checked' : ''}" onclick="toggleCheck(${step.num}, ${i}, this)">
-                <div class="check-box">${isChecked ? '✓' : ''}</div><span>${item}</span>
-              </li>`
-            }).join('')}
-          </ul>
-        </div>
-        <div class="tab-panel" id="tab-${step.num}-example">
-          <div class="example-box">
-            <div class="example-label">Project: ${step.example.project}</div>
-            <p class="prose">${step.example.desc}</p>
-          </div>
-          <div class="example-box" style="border: 1px dashed var(--teal-200); background: var(--teal-50);">
-             <div class="example-label" style="color:var(--teal-600)">Standalone Use</div>
-             <p class="prose" style="color:var(--teal-800)">${step.standalone}</p>
-          </div>
-        </div>
-        <button class="mark-done-btn ${isDone ? 'done' : ''}" onclick="markDone(${step.num}, this)">
-          ${isDone ? '✓ Step Completed' : 'Mark Step as Done'}
-        </button>
-      </div>
-    </div>
-  `;
+    `;
 }
 
-// ... existing render, toggleStep, showTab functions ...
-// Logic updated to include localStorage for a "real" app feel.
+function render() {
+    let html = '';
+    let lastPhase = null;
+    STEPS.forEach(step => {
+        if (step.phase !== lastPhase) {
+            html += `
+            <div class="phase-intro-block" data-phase="${step.phase}">
+                <div class="phase-label" data-phase="${step.phase}" style="color:${phaseColors[step.phase]}">${phaseNames[step.phase]}</div>
+                <div class="phase-intro-text">${PHASE_OVERVIEWS[step.phase]}</div>
+            </div>`;
+            lastPhase = step.phase;
+        }
+        html += buildStep(step);
+    });
+    document.getElementById('stepsList').innerHTML = html;
+    updateProgress();
+}
 
-function markDone(num, btn) {
-  const index = completedSteps.indexOf(num);
-  const card = document.getElementById(`step-${num}`);
-  const right = card.querySelector('.step-right');
+function toggleStep(num) {
+    const card = document.getElementById('step-' + num);
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.step-card.open').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) card.classList.add('open');
+}
 
-  if (index > -1) {
-    completedSteps.splice(index, 1);
-    btn.classList.remove('done');
-    btn.textContent = 'Mark Step as Done';
-    right.querySelector('.done-badge')?.remove();
-  } else {
-    completedSteps.push(num);
-    btn.classList.add('done');
-    btn.textContent = '✓ Step Completed';
-    if (!right.querySelector('.done-badge')) {
-      right.insertAdjacentHTML('afterbegin', '<div class="done-badge">✓</div>');
-    }
-    setTimeout(() => toggleStep(num), 500); // Auto-close on completion
-  }
-  localStorage.setItem('orca-progress', JSON.stringify(completedSteps));
-  updateProgress();
+function showTab(stepNum, tabName, btn) {
+    const card = document.getElementById('step-' + stepNum);
+    card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    card.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + stepNum + '-' + tabName).classList.add('active');
 }
 
 function toggleCheck(stepNum, itemIdx, li) {
-  const key = `${stepNum}-${itemIdx}`;
-  if (checkedItems[key]) {
-    delete checkedItems[key];
-    li.classList.remove('checked');
-    li.querySelector('.check-box').textContent = '';
-  } else {
-    checkedItems[key] = true;
-    li.classList.add('checked');
-    li.querySelector('.check-box').textContent = '✓';
-  }
-  localStorage.setItem('orca-checks', JSON.stringify(checkedItems));
+    const key = `${stepNum}-${itemIdx}`;
+    if (checkedItems[key]) {
+        delete checkedItems[key];
+        li.classList.remove('checked');
+        li.querySelector('.check-box').textContent = '';
+    } else {
+        checkedItems[key] = true;
+        li.classList.add('checked');
+        li.querySelector('.check-box').textContent = '✓';
+    }
+    localStorage.setItem('orca_checks', JSON.stringify(checkedItems));
+}
+
+function markDone(num, btn) {
+    const index = completedSteps.indexOf(num);
+    if (index > -1) {
+        completedSteps.splice(index, 1);
+    } else {
+        completedSteps.push(num);
+        setTimeout(() => toggleStep(num), 500);
+    }
+    localStorage.setItem('orca_progress', JSON.stringify(completedSteps));
+    render();
 }
 
 function updateProgress() {
-  const pct = (completedSteps.length / 15) * 100;
-  const fill = document.getElementById('progressFill');
-  fill.style.width = pct + '%';
-  document.getElementById('progressLabel').textContent = `${completedSteps.length} / 15 done`;
-  
-  if(pct === 100) {
-    fill.style.background = 'var(--teal-400)';
-  } else {
-    fill.style.background = 'linear-gradient(90deg, var(--purple-400), var(--teal-400))';
-  }
+    const pct = Math.round((completedSteps.length / 15) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = completedSteps.length + ' / 15 done';
 }
 
-// Reuse your existing filterPhase and Step data...
+function filterPhase(phase, btn) {
+    document.querySelectorAll('.phase-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.step-card, .phase-intro-block').forEach(el => {
+        el.classList.toggle('hidden', phase !== 'all' && el.dataset.phase !== phase);
+    });
+}
+
+render();
 </script>
 </body>
 </html>
